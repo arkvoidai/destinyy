@@ -1,0 +1,66 @@
+.logo-mark {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--fg-hi);
+  text-decoration: none;
+  user-select: none;
+}
+
+.logo-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg-hi);
+  text-transform: none;
+  line-height: 1;
+}
+
+/* Draw animation */
+.logo-mark.is-drawing .outer-arch,
+.logo-mark.is-drawing .inner-arch {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawArch 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-mark.is-drawing .inner-arch {
+  animation-delay: 150ms;
+}
+
+.logo-mark.is-drawing .ember-circle {
+  opacity: 0;
+  animation: fadeEmberCircle 260ms ease-out 800ms forwards;
+}
+
+@keyframes drawArch {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeEmberCircle {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion disables stroke draw */
+html[data-motion="none"] .logo-mark.is-drawing .outer-arch,
+html[data-motion="none"] .logo-mark.is-drawing .inner-arch {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+html[data-motion="none"] .logo-mark.is-drawing .ember-circle {
+  opacity: 1;
+  animation: none;
+}

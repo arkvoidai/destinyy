@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Arkvoid PLAN SECTION (Stage 8)
+   Theme: dawn, class: sheet
+   Horizontal stepper on desktop (1200px+), vertical rail on mobile.
+   Progress line fills ONLY through Step 01 with a one-time ring ripple.
+   ========================================================================== */
+
+.ark-plan {
+  position: relative;
+  padding-top: var(--space-80);
+  padding-bottom: var(--space-96);
+  background-color: var(--dawn-bg, var(--gas));
+  color: var(--cadet-deep);
+  overflow: hidden;
+}
+
+.plan-header-container {
+  margin-bottom: var(--space-48);
+}
+
+.plan-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 720px;
+}
+
+.plan-label-chip {
+  align-self: flex-start;
+  color: var(--cadet);
+  border-color: rgba(30, 41, 59, 0.2);
+}
+
+.plan-title {
+  margin: 0;
+  color: var(--cadet-deep);
+}
+
+.plan-title .ember-ink {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Stepper (1200px and up)
+   -------------------------------------------------------------------------- */
+.plan-desktop-stepper {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .plan-desktop-stepper {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-top: var(--space-24);
+  }
+
+  .plan-stepper-hairline-track {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: rgba(30, 41, 59, 0.12);
+    margin-bottom: var(--space-28);
+  }
+
+  /* The progress line fills ONLY through step 01 */
+  .plan-stepper-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(100% / 6);
+    background: var(--accent);
+    transform-origin: left center;
+    transition: transform 700ms var(--ease-out);
+  }
+
+  .plan-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-16);
+  }
+
+  .plan-tile {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(30, 41, 59, 0.08);
+    transition-property: transform, opacity;
+    transition-duration: var(--d-hover);
+    min-height: 220px;
+  }
+
+  .plan-tile:hover {
+    transform: translateY(-2px);
+    border-color: rgba(30, 41, 59, 0.16);
+    box-shadow: 0 12px 28px -8px rgba(30, 41, 59, 0.08);
+  }
+
+  /* Step 01 is tone inverse (cadet) */
+  .plan-tile.is-now {
+    background: var(--cadet-raised);
+    color: var(--fg);
+    border-color: var(--cadet);
+    box-shadow: 0 12px 32px -8px rgba(13, 17, 23, 0.25);
+  }
+
+  .plan-tile.is-now .plan-tile-numeral {
+    color: var(--accent);
+  }
+
+  .plan-tile.is-now .plan-tile-title {
+    color: var(--fg-hi);
+  }
+
+  .plan-tile.is-now .plan-tile-desc {
+    color: var(--fg-muted);
+  }
+}
+
+/* Common tile content */
+.plan-tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-12);
+}
+
+.plan-tile-numeral-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.plan-tile-numeral {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cadet-soft, var(--ink-muted));
+}
+
+/* Step 01 One-time ring ripple */
+.now-ripple-node {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.now-ripple-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  animation: planRingRipple 900ms var(--ease-out) 150ms 1 forwards;
+}
+
+@keyframes planRingRipple {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.plan-tile-title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cadet-deep);
+  margin-bottom: var(--space-8);
+}
+
+.plan-tile-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(30, 41, 59, 0.7);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Tablet & Mobile Stepper (< 1200px)
+   Vertical list with left rail; progress line fills only through step 01
+   -------------------------------------------------------------------------- */
+.plan-mobile-stepper {
+  display: block;
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .plan-mobile-stepper {
+    display: none;
+  }
+}
+
+.plan-mobile-rail-wrap {
+  position: relative;
+  padding-left: var(--space-28);
+}
+
+/* Left vertical rail */
+.plan-mobile-rail-line {
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: rgba(30, 41, 59, 0.12);
+}
+
+/* Mobile progress fill through step 01 only */
+.plan-mobile-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: calc(100% / 6);
+  background: var(--accent);
+  transform-origin: top center;
+  transition: transform 700ms var(--ease-out);
+}
+
+.plan-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.plan-mobile-card {
+  position: relative;
+  padding: var(--space-16) var(--space-20);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+}
+
+.plan-mobile-card.is-now {
+  background: var(--cadet-raised);
+  border-color: var(--cadet);
+  box-shadow: 0 8px 24px -4px rgba(13, 17, 23, 0.2);
+}
+
+.plan-mobile-card.is-now .plan-tile-numeral {
+  color: var(--accent);
+}
+
+.plan-mobile-card.is-now .plan-tile-title {
+  color: var(--fg-hi);
+}
+
+.plan-mobile-card.is-now .plan-tile-desc {
+  color: var(--fg-muted);
+}

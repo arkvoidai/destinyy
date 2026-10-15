@@ -1,0 +1,178 @@
+.ark-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  height: 56px;
+  min-height: 56px;
+  padding: 0 var(--space-24);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ark-btn .btn-label {
+  position: relative;
+  z-index: 2;
+  transition: color 240ms ease-out;
+}
+
+/* Sweep layer */
+.ark-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .ark-btn:hover::before {
+    transform: scaleX(1);
+  }
+
+  .ark-btn:hover .btn-chip {
+    transform: translate(3px, -3px);
+  }
+}
+
+.ark-btn:active {
+  transform: scale(0.98);
+  transition: transform 120ms ease-out;
+}
+
+.ark-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Disabled */
+.ark-btn.is-disabled,
+.ark-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Trailing 36px circular chip */
+.ark-btn .btn-chip {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 240ms ease-out;
+}
+
+.ark-btn .btn-chip.chip-ember {
+  background-color: var(--ember);
+  color: var(--black);
+}
+
+.ark-btn .btn-chip.chip-black {
+  background-color: var(--black);
+  color: var(--ember);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Primary
+   Dark: gas fill, cadet text, ember chip
+   Dawn: cadet fill, gas-soft text, ember chip
+   -------------------------------------------------------------------------- */
+.ark-btn.variant-primary {
+  background-color: var(--gas);
+  color: var(--cadet);
+  border: 1px solid var(--gas);
+}
+
+.ark-btn.variant-primary::before {
+  background-color: var(--gas-soft);
+}
+
+[data-theme="dawn"] .ark-btn.variant-primary,
+[data-theme="dawn-soft"] .ark-btn.variant-primary {
+  background-color: var(--cadet);
+  color: var(--gas-soft);
+  border-color: var(--cadet);
+}
+
+[data-theme="dawn"] .ark-btn.variant-primary::before,
+[data-theme="dawn-soft"] .ark-btn.variant-primary::before {
+  background-color: var(--cadet-raised);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Secondary
+   Transparent with 1px strong line and glass fill
+   -------------------------------------------------------------------------- */
+.ark-btn.variant-secondary {
+  background-color: var(--glass-fill);
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+}
+
+.ark-btn.variant-secondary::before {
+  background-color: var(--line-strong);
+}
+
+@media (hover: hover) {
+  .ark-btn.variant-secondary:hover {
+    color: var(--fg-hi);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Ember (finale only)
+   Ember fill, black text, black circle chip with ember icon
+   -------------------------------------------------------------------------- */
+.ark-btn.variant-ember {
+  background-color: var(--ember);
+  color: var(--black);
+  border: 1px solid var(--ember);
+}
+
+.ark-btn.variant-ember::before {
+  background-color: var(--white);
+}
+
+@media (hover: hover) {
+  .ark-btn.variant-ember:hover {
+    color: var(--black);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Variant: Quiet
+   Minimal ghost style
+   -------------------------------------------------------------------------- */
+.ark-btn.variant-quiet {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--fg);
+}
+
+.ark-btn.variant-quiet::before {
+  background-color: var(--line);
+}
+
+@media (hover: hover) {
+  .ark-btn.variant-quiet:hover {
+    color: var(--fg-hi);
+  }
+}

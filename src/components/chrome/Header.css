@@ -1,0 +1,209 @@
+.ark-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  background-color: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color 220ms ease-out;
+}
+
+/* Desktop (1024px and up): Full-width 68px bar with hairline on scroll */
+@media (min-width: 1024px) {
+  .ark-header {
+    height: var(--header-h);
+    padding-inline: var(--gutter);
+    display: flex;
+    align-items: center;
+  }
+
+  .ark-header.is-scrolled {
+    border-bottom-color: var(--line);
+    background-color: var(--bg);
+  }
+
+  .header-inner {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-24);
+  }
+
+  .mobile-actions {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
+
+  .desktop-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-12);
+  }
+}
+
+/* Mobile (Below 1024px): Floating glass bar inset 12px, 56px, pill */
+@media (max-width: 1023.98px) {
+  .ark-header {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    height: 56px;
+    border-radius: var(--radius-pill);
+    background-color: var(--glass-solid);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+    padding-inline: var(--space-16);
+    display: flex;
+    align-items: center;
+  }
+
+  .header-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .desktop-nav,
+  .desktop-actions {
+    display: none;
+  }
+
+  .mobile-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+}
+
+.header-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-brand:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Desktop Nav Glass Pill & Sliding Indicator */
+.nav-pill-list {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4);
+  background-color: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+}
+
+.nav-item {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: var(--space-8) var(--space-16);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: color 180ms ease-out;
+  user-select: none;
+}
+
+.nav-link:hover {
+  color: var(--fg);
+}
+
+.nav-link.is-active {
+  color: var(--fg-hi);
+  font-weight: 600;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Single sliding indicator behind active link */
+.nav-indicator {
+  position: absolute;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  left: 0;
+  width: 1px;
+  transform-origin: left center;
+  z-index: 1;
+  background-color: var(--glass-solid);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-inner);
+  pointer-events: none;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile Glass Buttons */
+.mobile-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--glass-solid);
+  border: 1px solid var(--glass-border);
+  color: var(--fg-hi);
+  cursor: pointer;
+  position: relative;
+}
+
+.mobile-icon-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Menu Toggle Morphing Bars (transform only) */
+.menu-toggle-btn {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-bar {
+  width: 18px;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease-out;
+}
+
+.menu-toggle-btn.is-open .menu-bar-top {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.menu-toggle-btn.is-open .menu-bar-mid {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-toggle-btn.is-open .menu-bar-bot {
+  transform: translateY(-6.5px) rotate(-45deg);
+}

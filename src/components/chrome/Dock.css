@@ -1,0 +1,121 @@
+@media (min-width: 1024px) {
+  .ark-dock {
+    display: none !important;
+  }
+}
+
+/* Ensure body does not have content hidden under dock on mobile */
+@media (max-width: 1023.98px) {
+  body {
+    padding-bottom: calc(var(--dock-h) + 24px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.ark-dock {
+  position: fixed;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  left: 12px;
+  right: 12px;
+  z-index: var(--z-dock);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  animation: dockFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+  transition: opacity 220ms ease-out, transform 220ms ease-out;
+}
+
+.ark-dock.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+.dock-pill {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 420px;
+  height: var(--dock-h);
+  background-color: var(--glass-solid);
+  border: 1px solid var(--glass-border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+}
+
+.dock-item {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 48px;
+  height: 100%;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--fg-muted);
+  border-radius: var(--radius-pill);
+  transition: color 200ms ease-out;
+  user-select: none;
+}
+
+.dock-item:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.dock-item.is-active {
+  color: var(--cadet);
+  font-weight: 600;
+}
+
+.dock-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+/* Sliding active --gas indicator */
+.dock-indicator {
+  position: absolute;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  left: 0;
+  width: 1px;
+  transform-origin: left center;
+  z-index: 1;
+  background-color: var(--gas);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-inner);
+  pointer-events: none;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dockFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html[data-motion="none"] .ark-dock {
+  animation: none;
+  transform: none;
+}

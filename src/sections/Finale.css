@@ -1,0 +1,251 @@
+/* ==========================================================================
+   Arkvoid FINALE SECTION (Stage 9)
+   Theme: void
+   Massive solid ember panel with black text (6.0:1 contrast), black full stop,
+   GhostText clipped in panel bottom. Black sub-bar with mailto link & Copy Email.
+   This is the ONLY large ember surface on the site.
+   ========================================================================== */
+
+.ark-finale {
+  position: relative;
+  padding-top: var(--space-80);
+  padding-bottom: var(--space-96);
+  background-color: var(--black);
+  color: var(--fg);
+  overflow: hidden;
+}
+
+.finale-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+
+/* --------------------------------------------------------------------------
+   The Massive Ember Panel
+   Solid --accent, radius xl, padding clamp(32px, 6vw, 96px), black text
+   -------------------------------------------------------------------------- */
+.finale-ember-panel {
+  position: relative;
+  width: 100%;
+  background-color: var(--accent);
+  color: var(--black);
+  border-radius: var(--radius-xl);
+  padding: clamp(32px, 6vw, 96px);
+  overflow: hidden;
+  box-shadow: 0 32px 80px -16px hsla(24, 95%, 53%, 0.3);
+}
+
+.finale-panel-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 780px;
+  gap: var(--space-24);
+}
+
+.finale-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin: 0;
+}
+
+/* Black full stop: the Ember has become the entire page */
+.finale-black-period {
+  color: var(--black);
+  display: inline;
+}
+
+.finale-body {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.86);
+  max-width: 54ch;
+  margin: 0;
+}
+
+/* Three Actions in Panel */
+.finale-actions-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+  margin-top: var(--space-12);
+}
+
+/* 1. Black pill with --gas text */
+.finale-btn-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  background-color: var(--black);
+  color: var(--gas);
+  border: 1px solid var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: transform, opacity;
+  transition-duration: var(--d-press);
+  transition-timing-function: var(--ease-out);
+}
+
+.finale-btn-demo:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.finale-btn-demo:active {
+  transform: translateY(1px);
+}
+
+/* 2. Outlined black pill */
+.finale-btn-x {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: transform, background, color;
+  transition-duration: var(--d-press);
+  transition-timing-function: var(--ease-out);
+}
+
+.finale-btn-x:hover {
+  background: var(--black);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.finale-btn-x:active {
+  transform: translateY(1px);
+}
+
+/* 3. Quiet text button */
+.finale-btn-brief {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition-property: opacity;
+  transition-duration: var(--d-hover);
+}
+
+.finale-btn-brief:hover {
+  opacity: 0.75;
+}
+
+/* GhostText "Arkvoid" clipped in panel's lower edge */
+.finale-ghost-wrap {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.14;
+  color: var(--black);
+  z-index: 1;
+}
+
+.finale-ghost-wrap .ark-ghost {
+  color: var(--black);
+  font-size: clamp(6rem, 16vw, 15rem);
+}
+
+/* --------------------------------------------------------------------------
+   Sub-Bar under panel in the black area
+   Mailto link & Copy Email button
+   -------------------------------------------------------------------------- */
+.finale-subbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  padding: var(--space-16) var(--space-8);
+  border-top: 1px solid var(--border-glass);
+}
+
+.finale-subbar-email-link {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-hi);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  transition-property: opacity;
+  transition-duration: var(--d-hover);
+}
+
+.finale-subbar-email-link:hover {
+  color: var(--accent);
+}
+
+.finale-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--fg);
+  border: 1px solid var(--border-glass);
+  cursor: pointer;
+  transition-property: transform, opacity;
+  transition-duration: var(--d-press);
+}
+
+.finale-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--fg-hi);
+}
+
+.finale-copy-label {
+  display: inline-block;
+  transition: opacity 200ms ease;
+}
+
+.finale-copy-label.is-copied {
+  color: var(--accent);
+}
+
+.finale-sr-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

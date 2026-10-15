@@ -1,0 +1,76 @@
+.ark-glass {
+  position: relative;
+  background-color: var(--glass-solid);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-inner);
+}
+
+.ark-glass.radius-md {
+  border-radius: var(--radius-md);
+}
+
+.ark-glass.radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.ark-glass.radius-xl {
+  border-radius: var(--radius-xl);
+}
+
+.ark-glass.is-padded {
+  padding: var(--space-24);
+}
+
+/* Tone: Dark */
+.ark-glass.tone-dark {
+  background-color: var(--glass-solid);
+  border-color: var(--glass-border);
+  color: var(--fg);
+}
+
+/* Tone: Light */
+.ark-glass.tone-light {
+  background-color: var(--glass-solid);
+  border-color: var(--glass-border);
+  color: var(--fg);
+}
+
+/* Tone: Inverse swaps to opposite surface */
+.ark-glass.tone-inverse {
+  background-color: var(--gas);
+  border-color: var(--gas-deep);
+  color: var(--cadet);
+}
+
+[data-theme="dawn"] .ark-glass.tone-inverse,
+[data-theme="dawn-soft"] .ark-glass.tone-inverse {
+  background-color: var(--cadet);
+  border-color: var(--cadet-raised);
+  color: var(--gas-soft);
+}
+
+/* Blur only at min-width 900px inside @supports and when prop blur is true */
+@media (min-width: 900px) {
+  @supports (backdrop-filter: blur(16px)) {
+    .ark-glass.has-blur.tone-dark,
+    .ark-glass.has-blur.tone-light {
+      background-color: var(--glass-fill);
+      backdrop-filter: blur(16px) saturate(1.1);
+      -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    }
+  }
+}
+
+/* Interactive states */
+@media (hover: hover) {
+  .ark-glass.interactive:hover {
+    transform: translateY(-3px);
+    border-color: var(--glass-border-strong);
+    transition: transform 220ms ease-out, border-color 220ms ease-out;
+  }
+}
+
+.ark-glass.interactive:active {
+  transform: scale(0.985);
+  transition: transform 120ms ease-out;
+}

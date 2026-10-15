@@ -1,0 +1,704 @@
+.ark-demo {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.demo-header-container {
+  margin-bottom: var(--space-48);
+}
+
+.demo-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 760px;
+}
+
+.demo-title {
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.demo-body {
+  margin: 0;
+  color: var(--fg);
+}
+
+.demo-saved-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.saved-device-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--gas-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop 2-Column Stage Layout (960px and up)
+   -------------------------------------------------------------------------- */
+@media (min-width: 960px) {
+  .demo-stage-container {
+    display: grid;
+    grid-template-columns: minmax(380px, 440px) 1fr;
+    gap: var(--space-48);
+    align-items: start;
+    position: relative;
+  }
+
+  .demo-right-column {
+    position: relative;
+  }
+
+  .record-sticky-wrapper {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+@media (max-width: 959.98px) {
+  .demo-stage-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Courtyard Screen Elements
+   -------------------------------------------------------------------------- */
+.courtyard-screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  width: 100%;
+}
+
+.courtyard-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--cadet-deep);
+}
+
+.courtyard-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+}
+
+.courtyard-overlay-left {
+  position: absolute;
+  top: var(--space-12);
+  left: var(--space-12);
+  z-index: 5;
+}
+
+.courtyard-overlay-right {
+  position: absolute;
+  top: var(--space-12);
+  right: var(--space-12);
+  z-index: 5;
+}
+
+.courtyard-place-chip,
+.courtyard-clock-chip {
+  font-size: 12px;
+  height: 28px;
+  min-height: 28px;
+  padding: 0 var(--space-12);
+}
+
+.courtyard-role-caption {
+  padding-inline: var(--space-4);
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Inhabitants List
+   -------------------------------------------------------------------------- */
+.inhabitants-panel {
+  padding: var(--space-16);
+}
+
+.inhabitants-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.inhabitant-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-8);
+  border-radius: var(--radius-md);
+  transition: opacity 240ms ease-out;
+}
+
+.inhabitant-row.is-absent {
+  opacity: 0.65;
+}
+
+.inhabitant-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-raised);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.inhabitant-badge .monogram {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--fg-hi);
+  line-height: 1;
+}
+
+.inhabitant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.inhabitant-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+}
+
+.inhabitant-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--fg-hi);
+}
+
+.inhabitant-role {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.inhabitant-goal {
+  font-size: 12px;
+  color: var(--fg);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inhabitant-presence-chip {
+  font-size: 11px;
+  height: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Action Tiles Grid
+   -------------------------------------------------------------------------- */
+.actions-grid-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-12);
+}
+
+@media (max-width: 359.98px) {
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.action-tile-btn {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-lg);
+  background-color: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  color: var(--fg);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 220ms ease-out, border-color 220ms ease-out;
+}
+
+.action-tile-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--glass-border-strong);
+  color: var(--fg-hi);
+}
+
+.action-tile-btn:active {
+  transform: scale(0.98);
+}
+
+.action-tile-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.action-tile-btn.is-leave {
+  grid-column: span 2;
+  background-color: var(--cadet-raised);
+  border-color: var(--cadet-border);
+  color: var(--gas-soft);
+}
+
+@media (max-width: 359.98px) {
+  .action-tile-btn.is-leave {
+    grid-column: span 1;
+  }
+}
+
+.action-btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--glass-solid);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fg-hi);
+}
+
+.action-btn-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.action-label {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.action-meaning {
+  font-size: 12px;
+  color: var(--fg-muted);
+  line-height: 1.3;
+}
+
+/* Nudge Animation on Reject (3 half cycles, 280ms) */
+.action-tile-btn.is-rejected {
+  animation: tileNudge 280ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-color: var(--accent);
+}
+
+@keyframes tileNudge {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.action-rejection-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  color: var(--gas-soft);
+  font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Pipeline Stepper Panel
+   -------------------------------------------------------------------------- */
+.pipeline-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.pipeline-title {
+  color: var(--fg-muted);
+}
+
+.pipeline-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pipeline-step {
+  display: flex;
+  gap: var(--space-12);
+  position: relative;
+  transition: color 240ms ease-out;
+}
+
+.step-node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 14px;
+}
+
+.step-node {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 240ms ease-out;
+}
+
+.pipeline-step.is-done .step-node {
+  background-color: var(--gas);
+  border-color: var(--gas);
+}
+
+.pipeline-step.is-done .node-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--cadet);
+}
+
+.pipeline-step.is-rejected .step-node {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.step-line {
+  width: 1px;
+  flex: 1;
+  min-height: 20px;
+  background-color: var(--line);
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-12);
+}
+
+.step-num-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  transition: color 240ms ease-out;
+}
+
+.pipeline-step.is-done .step-num-name {
+  color: var(--fg-hi);
+}
+
+.rejected-badge {
+  color: var(--accent);
+  font-weight: 600;
+  margin-left: var(--space-4);
+}
+
+.step-desc {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Response Box
+   -------------------------------------------------------------------------- */
+.response-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.response-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.speaker-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--fg-hi);
+}
+
+.response-origin {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.response-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: World Record Panel
+   -------------------------------------------------------------------------- */
+.record-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  border-radius: var(--radius-xl);
+}
+
+.record-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.record-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record-title {
+  margin: 0;
+}
+
+.record-count-pill {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.record-sweep-line {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.record-sweep-line.is-sweeping {
+  animation: headerSweep 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes headerSweep {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+/* Ledger Scroll Area */
+.ledger-scroll-area {
+  max-height: 440px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-right: var(--space-4);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.ledger-scroll-area:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.ledger-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-sm);
+  border-bottom: 1px solid var(--line);
+}
+
+.ledger-row.is-committed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: rgba(245, 79, 27, 0.14);
+  animation: rowWash 1200ms ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes rowWash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.ledger-row-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ledger-id {
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+.ledger-day {
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+.ledger-action {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-hi);
+}
+
+.ledger-detail {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.muted-text {
+  color: var(--fg-muted);
+}
+
+/* Memories Section */
+.record-memories-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-16);
+}
+
+.memories-header {
+  color: var(--fg-muted);
+}
+
+.inhabitant-memory-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.memory-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+
+.memory-tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.memory-inh-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--fg-hi);
+}
+
+.memory-clarity-chip {
+  font-size: 10px;
+  height: 20px;
+  min-height: 20px;
+  padding: 0 var(--space-8);
+}
+
+.memory-inh-text {
+  font-size: 12px;
+  color: var(--fg);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Clear Record Footer */
+.record-footer {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-16);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clear-record-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  transition: color 180ms ease-out;
+}
+
+.clear-record-btn:hover {
+  color: var(--fg-hi);
+}
+
+.clear-record-btn.is-confirming {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.clear-record-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

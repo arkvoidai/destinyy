@@ -1,0 +1,273 @@
+.ark-world {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  padding-bottom: calc(var(--section-pad) + var(--space-48));
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.world-header-container {
+  margin-bottom: var(--space-48);
+}
+
+.world-label-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 720px;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop 2-Column Sticky Layout (900px and up)
+   -------------------------------------------------------------------------- */
+@media (min-width: 900px) {
+  .world-sticky-container {
+    display: grid;
+    grid-template-columns: 45% 2px 1fr;
+    gap: var(--space-48);
+    position: relative;
+    align-items: start;
+  }
+
+  .world-left-column {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20svh;
+  }
+
+  .world-chapter-item {
+    min-height: 78svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--fg-muted);
+    transition: color 280ms ease-out;
+  }
+
+  .world-chapter-item.is-active {
+    color: var(--fg-hi);
+  }
+
+  /* Center hairline */
+  .world-center-line {
+    position: relative;
+    height: 100%;
+    width: 1px;
+    background-color: var(--line);
+  }
+
+  .world-line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent);
+    transform-origin: top;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Right Sticky Stage */
+  .world-right-column {
+    position: relative;
+    height: 100%;
+  }
+
+  .world-sticky-stage {
+    position: sticky;
+    top: 12svh;
+    height: 76svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Chapter Typography */
+.chapter-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: var(--space-8);
+  color: var(--fg-muted);
+  transition: color 280ms ease-out;
+}
+
+.chapter-numeral.is-ember {
+  color: var(--accent);
+}
+
+.chapter-title {
+  margin: 0 0 var(--space-12) 0;
+  color: inherit;
+}
+
+.chapter-desc {
+  max-width: 44ch;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Stage Glass Matte & Crossfading Slides
+   -------------------------------------------------------------------------- */
+.world-stage-glass {
+  width: 100%;
+  max-width: 540px;
+  padding: 6px; /* 6px padding inside Glass matte */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.world-stage-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--cadet-deep);
+}
+
+.world-stage-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.world-stage-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.world-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Special Chapter Effects: Leave Day-Pass & Return Lantern
+   -------------------------------------------------------------------------- */
+
+/* Chapter 04 "Leave": Black overlay animates to 40% and back */
+.world-leave-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--black);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 700ms ease-out;
+}
+
+.world-leave-overlay.is-active {
+  animation: leaveDayPass 1200ms ease-in-out forwards;
+}
+
+@keyframes leaveDayPass {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+html[data-motion="lite"] .world-leave-overlay.is-active,
+html[data-motion="none"] .world-leave-overlay.is-active {
+  animation: none;
+  opacity: 0;
+}
+
+/* Chapter 05 "Return": 10px ember point with 28px radial */
+.world-lantern-beacon {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 600ms ease-out 300ms;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.world-lantern-beacon.is-active {
+  opacity: 1;
+}
+
+.lantern-point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  position: relative;
+  z-index: 2;
+}
+
+.lantern-glow {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(245, 79, 27, 0.35) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile & Tablet Stacked Cards (< 900px)
+   -------------------------------------------------------------------------- */
+.world-mobile-container {
+  width: 100%;
+}
+
+.world-mobile-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.world-mobile-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.world-card-glass {
+  padding: 6px;
+  border-radius: var(--radius-xl);
+}
+
+.world-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.world-card-content {
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--space-8);
+}

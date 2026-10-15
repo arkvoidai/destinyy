@@ -1,0 +1,247 @@
+.ark-realms {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  background-color: var(--bg);
+  color: var(--fg);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
+.realms-header-container {
+  margin-bottom: var(--space-48);
+}
+
+.realms-label-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 720px;
+}
+
+.realms-title {
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.realms-sub {
+  margin: 0;
+  color: var(--fg);
+}
+
+/* --------------------------------------------------------------------------
+   Realms Grid Layout (Responsive Columns)
+   -------------------------------------------------------------------------- */
+.realms-content-container {
+  width: 100%;
+}
+
+.realms-scroller {
+  width: 100%;
+}
+
+.realms-scroller:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.realms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-20);
+  width: 100%;
+}
+
+@media (min-width: 1100px) {
+  .realms-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1099.98px) {
+  .realms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Realm Card Presentation (3:4 Aspect Ratio)
+   -------------------------------------------------------------------------- */
+.realm-card-wrap {
+  width: 100%;
+}
+
+.realm-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-20);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-card);
+}
+
+.realm-photo-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.realm-scene-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .realm-card:hover .realm-scene-photo {
+    transform: scale(1.04);
+  }
+}
+
+/* Top & Bottom Scrims for text contrast */
+.realm-scrim-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 12, 21, 0.70) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.realm-scrim-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(10, 12, 21, 0.85) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Numeral Top-Left */
+.realm-numeral {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--gas);
+  opacity: 0.55;
+}
+
+/* Bottom Realm Name */
+.realm-bottom-content {
+  position: relative;
+  z-index: 2;
+}
+
+.realm-name {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--gas-soft);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Unknown Cards (Dashed 1px border, door icon, word Unknown)
+   -------------------------------------------------------------------------- */
+.realm-card.is-unknown {
+  border: 1px dashed var(--line-strong);
+  background-color: var(--glass-fill);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.unknown-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-12);
+  margin-block: auto;
+}
+
+.unknown-icon-box {
+  color: var(--fg-muted);
+  opacity: 0.7;
+}
+
+.unknown-title {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Horizontal Scroll Row (< 600px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 599.98px) {
+  .realms-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    padding-inline: 16px;
+    margin-inline: -16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+  }
+
+  .realms-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .realms-grid {
+    display: flex;
+    gap: var(--space-16);
+    width: max-content;
+  }
+
+  .realm-card-wrap {
+    width: 76vw;
+    max-width: 300px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}

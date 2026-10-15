@@ -1,0 +1,26 @@
+.ember-dot {
+  display: inline;
+  color: var(--accent);
+  margin-left: 0.04em;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+/* Optional late fade when motion class applied */
+.ember-dot.late-fade {
+  animation: emberFade 320ms ease-out 400ms both;
+}
+
+@keyframes emberFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html[data-motion="none"] .ember-dot.late-fade {
+  animation: none;
+  opacity: 1;
+}

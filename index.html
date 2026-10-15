@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Arkvoid | A world that knows you were here</title>
+    <meta
+      name="description"
+      content="Arkvoid is building a living world you can step into, and the device to enter it. The people there remember you."
+    />
+
+    <!-- Open Graph (title, description, and type only) -->
+    <meta property="og:title" content="Arkvoid | A world that knows you were here" />
+    <meta
+      property="og:description"
+      content="Arkvoid is building a living world you can step into, and the device to enter it. The people there remember you."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon and Webmanifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts Preconnect and Single Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Organization (no address, no URL) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Arkvoid Inc.",
+        "email": "heyarkvoid@gmail.com",
+        "founder": {
+          "@type": "Person",
+          "name": "Manish Talukdar"
+        },
+        "sameAs": [
+          "https://x.com/ArkvoidAI"
+        ]
+      }
+    </script>
+
+    <!-- Noscript reveal fallback -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          clip-path: none !important;
+        }
+      </style>
+    </noscript>
+
+    <!-- Inline boot script (runs before paint) -->
+    <script>
+      (function () {
+        var docEl = document.documentElement;
+        docEl.classList.add('js');
+
+        var motionMode = 'full';
+        try {
+          var stored = sessionStorage.getItem('arkvoid.motion');
+          if (stored === 'full' || stored === 'lite' || stored === 'none') {
+            motionMode = stored;
+          } else {
+            var prefersReduced =
+              window.matchMedia &&
+              window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+              motionMode = 'none';
+            } else {
+              var cores = navigator.hardwareConcurrency || 4;
+              var mem = navigator.deviceMemory || 4;
+              var conn =
+                navigator.connection ||
+                navigator.mozConnection ||
+                navigator.webkitConnection;
+              var saveData = conn && conn.saveData;
+              if (cores < 4 || mem < 4 || saveData) {
+                motionMode = 'lite';
+              }
+            }
+          }
+        } catch (e) {
+          motionMode = 'full';
+        }
+        docEl.setAttribute('data-motion', motionMode);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

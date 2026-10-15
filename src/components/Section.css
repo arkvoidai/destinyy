@@ -1,0 +1,16 @@
+.ark-section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.ark-section.sheet {
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  margin-top: calc(-1 * var(--space-32));
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-card);
+}

@@ -1,0 +1,71 @@
+.ark-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  height: 32px;
+  min-height: 32px;
+  padding: 0 var(--space-12);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ark-chip.variant-solid {
+  background-color: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--fg-hi);
+}
+
+.ark-chip.variant-glass {
+  background-color: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  color: var(--fg);
+}
+
+.ark-chip.variant-outline {
+  background-color: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+}
+
+/* Dots */
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* Now: filled dot with a 1px ember ring */
+.chip-dot.dot-now {
+  background-color: var(--fg-hi);
+  box-shadow: 0 0 0 1.5px var(--ember);
+}
+
+/* Next: half-filled */
+.chip-dot.dot-next {
+  border: 1px solid var(--fg-hi);
+  background: linear-gradient(90deg, var(--fg-hi) 50%, transparent 50%);
+}
+
+/* Then: hollow */
+.chip-dot.dot-then {
+  border: 1px solid var(--fg-muted);
+  background-color: transparent;
+}
+
+/* Rejected: an X glyph */
+.chip-dot.dot-glyph {
+  width: 10px;
+  height: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ember);
+}

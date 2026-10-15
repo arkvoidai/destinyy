@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Arkvoid COMPACT FOOTER (Stage 9)
+   Theme: deep
+   Hairline, LogoLockup, tagline, 2-column nav links, small glass pills
+   for X and email, legal, concept note, memory note in muted italic.
+   Padding-bottom clears mobile dock and safe areas.
+   ========================================================================== */
+
+.ark-footer {
+  position: relative;
+  background-color: var(--deep-bg, var(--cadet-deep));
+  color: var(--fg);
+  border-top: 1px solid var(--border-glass);
+  padding-top: var(--space-64);
+  padding-bottom: calc(var(--space-64) + env(safe-area-inset-bottom, 0px));
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: var(--space-48);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-36);
+  }
+}
+
+/* Brand Column */
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: 340px;
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+/* Nav Links in Two Columns */
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-16) var(--space-32);
+}
+
+.footer-nav-link {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--fg-muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition-property: opacity;
+  transition-duration: var(--d-press);
+}
+
+.footer-nav-link:hover {
+  color: var(--fg-hi);
+  opacity: 1;
+}
+
+/* Small Glass Pills for X and Email */
+.footer-social-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  align-items: flex-start;
+}
+
+.footer-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  text-decoration: none;
+  transition-property: transform, opacity;
+  transition-duration: var(--d-press);
+}
+
+.footer-pill-link:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--fg-hi);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Footer Bottom Row: Legal, Images Note, Memory Note
+   -------------------------------------------------------------------------- */
+.footer-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-top: var(--space-32);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+
+.footer-legal {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.footer-images-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.footer-memory-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-muted);
+  margin: 0;
+  line-height: 1.5;
+}

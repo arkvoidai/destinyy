@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Arkvoid DESIGN TOKENS
+   Constitution Section 4 (Palette) & Section 5 (Type)
+   ALL hex colors for the application MUST reside in this file only.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. PALETTE (Exact brand tokens + derived tints from Constitution)
+     ------------------------------------------------------------------------ */
+  --black: #000000;
+  --white: #ffffff;
+  --cadet: #1e223d; /* Space Cadet */
+  --gas: #e6d5b7; /* Gargoyle Gas */
+  --ember: #f54f1b; /* Orange */
+
+  /* Derived tints (mixing ONLY the 3 brand hues plus black and white) */
+  --cadet-deep: #121425;
+  --cadet-raised: #2b2f49;
+  --void-raised: #0a0c15;
+  --gas-soft: #f0e6d4;
+  --gas-soft-2: #f8f2e9;
+  --gas-deep: #cfc0a5;
+  --gas-body: #dacaae;
+  --ink: #30344c;
+  --ink-muted: #504f5c;
+  --ember-ink: #b83b14;
+
+  /* ------------------------------------------------------------------------
+     2. TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+  --font-display: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
+  --font-body: 'Inter Tight', 'Inter Tight Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ------------------------------------------------------------------------
+     3. RADII (sm: 14, md: 22, lg: 32, xl: 44, pill: 999)
+     ------------------------------------------------------------------------ */
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 32px;
+  --radius-xl: 44px;
+  --radius-pill: 999px;
+  --r-md: var(--radius-md);
+
+  /* ------------------------------------------------------------------------
+     4. SPACING SCALE (4 / 8 / 12 / 16 / 24 / 32 / 48 / 72 / 112 / 176)
+     ------------------------------------------------------------------------ */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-72: 72px;
+  --space-112: 112px;
+  --space-176: 176px;
+
+  /* ------------------------------------------------------------------------
+     5. LAYOUT VARS
+     ------------------------------------------------------------------------ */
+  --container: 1280px;
+  --gutter: clamp(20px, 5vw, 72px);
+  --header-h: 68px;
+  --dock-h: 68px;
+  --section-pad: clamp(88px, 12vw, 176px);
+  --gap: clamp(12px, 1.6vw, 22px);
+
+  /* ------------------------------------------------------------------------
+     6. Z-INDEX SCALE
+     ------------------------------------------------------------------------ */
+  --z-content: 1;
+  --z-sticky: 10;
+  --z-dock: 40;
+  --z-header: 50;
+  --z-menu: 60;
+  --z-dialog: 70;
+  --z-emberline: 80;
+  --z-skip: 90;
+
+  /* ------------------------------------------------------------------------
+     7. STATIC SHADOWS
+     ------------------------------------------------------------------------ */
+  --shadow-card: 0 28px 64px -28px rgba(0, 0, 0, 0.7);
+  --shadow-inner: inset 0 1px 0 rgba(240, 230, 212, 0.10);
+
+  /* Default theme values fallback to void */
+  --bg: #000000;
+  --bg-raised: #0a0c15;
+  --fg-hi: #f0e6d4;
+  --fg: #dacaae;
+  --fg-muted: rgba(230, 213, 183, 0.68);
+  --line: rgba(230, 213, 183, 0.14);
+  --line-strong: rgba(230, 213, 183, 0.28);
+  --accent: var(--ember);
+  --focus: #f0e6d4;
+  --glass-fill: rgba(230, 213, 183, 0.07);
+  --glass-border: rgba(230, 213, 183, 0.16);
+  --glass-border-strong: rgba(230, 213, 183, 0.30);
+  --glass-solid: rgba(30, 34, 61, 0.94);
+  --scrim: rgba(0, 0, 0, 0.72);
+  --ghost-color: rgba(230, 213, 183, 0.07);
+}
+
+/* Documented Breakpoint Constants (cannot use custom properties in @media):
+   - Mobile:  600px  (@media (max-width: 600px))
+   - Tablet:  900px  (@media (max-width: 900px) or (min-width: 900px))
+   - Desktop: 1200px (@media (min-width: 1200px))
+*/
+@media (max-width: 600px) {
+  :root {
+    --header-h: 56px; /* Mobile floating header */
+  }
+}
+
+/* ==========================================================================
+   THEME BLOCKS via [data-theme]
+   ========================================================================== */
+
+/* 1. Theme: Void */
+[data-theme="void"],
+:root:not([data-theme]) {
+  --bg: #000000;
+  --bg-raised: #0a0c15;
+  --fg-hi: #f0e6d4;
+  --fg: #dacaae;
+  --fg-muted: rgba(230, 213, 183, 0.68);
+  --line: rgba(230, 213, 183, 0.14);
+  --line-strong: rgba(230, 213, 183, 0.28);
+  --accent: var(--ember);
+  --focus: #f0e6d4;
+  --glass-fill: rgba(230, 213, 183, 0.07);
+  --glass-border: rgba(230, 213, 183, 0.16);
+  --glass-border-strong: rgba(230, 213, 183, 0.30);
+  --glass-solid: rgba(30, 34, 61, 0.94);
+  --scrim: rgba(0, 0, 0, 0.72);
+  --ghost-color: rgba(230, 213, 183, 0.07);
+}
+
+/* 2. Theme: Night */
+[data-theme="night"] {
+  --bg: #1e223d;
+  --bg-raised: #2b2f49;
+  --fg-hi: #f0e6d4;
+  --fg: #dacaae;
+  --fg-muted: rgba(230, 213, 183, 0.68);
+  --line: rgba(230, 213, 183, 0.14);
+  --line-strong: rgba(230, 213, 183, 0.28);
+  --accent: var(--ember);
+  --focus: #f0e6d4;
+  --glass-fill: rgba(230, 213, 183, 0.07);
+  --glass-border: rgba(230, 213, 183, 0.16);
+  --glass-border-strong: rgba(230, 213, 183, 0.30);
+  --glass-solid: rgba(30, 34, 61, 0.94);
+  --scrim: rgba(18, 20, 37, 0.72);
+  --ghost-color: rgba(230, 213, 183, 0.07);
+}
+
+/* 3. Theme: Deep */
+[data-theme="deep"] {
+  --bg: #121425;
+  --bg-raised: #1e223d;
+  --fg-hi: #f0e6d4;
+  --fg: #dacaae;
+  --fg-muted: rgba(230, 213, 183, 0.68);
+  --line: rgba(230, 213, 183, 0.14);
+  --line-strong: rgba(230, 213, 183, 0.28);
+  --accent: var(--ember);
+  --focus: #f0e6d4;
+  --glass-fill: rgba(230, 213, 183, 0.07);
+  --glass-border: rgba(230, 213, 183, 0.16);
+  --glass-border-strong: rgba(230, 213, 183, 0.30);
+  --glass-solid: rgba(30, 34, 61, 0.94);
+  --scrim: rgba(10, 12, 21, 0.72);
+  --ghost-color: rgba(230, 213, 183, 0.07);
+}
+
+/* 4. Theme: Dawn */
+[data-theme="dawn"] {
+  --bg: #e6d5b7;
+  --bg-raised: #f0e6d4;
+  --fg-hi: #1e223d;
+  --fg: #30344c;
+  --fg-muted: #504f5c;
+  --line: rgba(30, 34, 61, 0.16);
+  --line-strong: rgba(30, 34, 61, 0.30);
+  --accent: var(--ember-ink);
+  --focus: #1e223d;
+  --glass-fill: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(30, 34, 61, 0.12);
+  --glass-border-strong: rgba(30, 34, 61, 0.24);
+  --glass-solid: #f8f2e9;
+  --scrim: rgba(30, 34, 61, 0.40);
+  --ghost-color: rgba(30, 34, 61, 0.07);
+}
+
+/* 5. Theme: Dawn-Soft */
+[data-theme="dawn-soft"] {
+  --bg: #f0e6d4;
+  --bg-raised: #f8f2e9;
+  --fg-hi: #1e223d;
+  --fg: #30344c;
+  --fg-muted: #504f5c;
+  --line: rgba(30, 34, 61, 0.16);
+  --line-strong: rgba(30, 34, 61, 0.30);
+  --accent: var(--ember-ink);
+  --focus: #1e223d;
+  --glass-fill: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(30, 34, 61, 0.12);
+  --glass-border-strong: rgba(30, 34, 61, 0.24);
+  --glass-solid: #f8f2e9;
+  --scrim: rgba(30, 34, 61, 0.40);
+  --ghost-color: rgba(30, 34, 61, 0.07);
+}

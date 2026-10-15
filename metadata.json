@@ -1,0 +1,8 @@
+{
+  "name": "Arkvoid",
+  "description": "Arkvoid builds persistent embodied world computing, starting with a living cultivation world and the rule engine that keeps it true.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

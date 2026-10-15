@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Arkvoid RESEARCH SECTION
+   Theme: dawn-soft, class: sheet
+   Four research inquiries in a 2-column grid with architectural ghost numerals.
+   ========================================================================== */
+
+.ark-research {
+  position: relative;
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-80);
+  background-color: var(--dawn-soft-bg, var(--gas-soft));
+  color: var(--cadet-deep);
+  overflow: hidden;
+}
+
+.research-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+}
+
+.research-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 760px;
+}
+
+.research-label-chip {
+  align-self: flex-start;
+  color: var(--cadet);
+  border-color: rgba(30, 41, 59, 0.2);
+}
+
+.research-title {
+  margin: 0;
+  color: var(--cadet-deep);
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-20);
+}
+
+@media (max-width: 759.98px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-32);
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  transition-property: transform, opacity;
+  transition-duration: var(--d-hover);
+}
+
+.research-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 41, 59, 0.16);
+  box-shadow: 0 12px 28px -8px rgba(30, 41, 59, 0.08);
+}
+
+.research-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.research-track-label {
+  color: var(--cadet-soft, var(--ink-muted));
+  font-weight: 600;
+}
+
+.research-question {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.25;
+  color: var(--cadet-deep);
+  margin: 0;
+}
+
+.research-desc {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(30, 41, 59, 0.82);
+  margin: 0;
+}
+
+.research-ghost-wrap {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  pointer-events: none;
+  opacity: 0.08;
+  color: var(--cadet-deep);
+  z-index: 0;
+}

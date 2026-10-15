@@ -1,0 +1,419 @@
+.ark-engine {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  background-color: var(--bg);
+  color: var(--fg);
+  z-index: 4;
+}
+
+.engine-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-72);
+}
+
+.engine-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 60ch;
+}
+
+.engine-title {
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.engine-body {
+  margin: 0;
+  color: var(--fg);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Diagram (Suggest -> Check -> Record)
+   -------------------------------------------------------------------------- */
+.engine-diagram-wrap {
+  width: 100%;
+}
+
+.engine-diagram-glass {
+  background-color: var(--cadet);
+  color: var(--gas-soft);
+  border: 1px solid var(--cadet-border);
+  padding: var(--space-32);
+  border-radius: var(--radius-xl);
+}
+
+.diagram-svg-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagram-svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Connecting line draw */
+.diagram-travel-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: travelStroke 1100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes travelStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Stacking 3 record bars (60ms apart) */
+.record-bar {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: barAppear 240ms ease-out forwards;
+}
+
+.record-bar.bar-1 {
+  animation-delay: 600ms;
+}
+
+.record-bar.bar-2 {
+  animation-delay: 660ms;
+}
+
+.record-bar.bar-3 {
+  animation-delay: 720ms;
+}
+
+@keyframes barAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Six Steps Rail (Desktop horizontal, Tablet 3x2, Mobile vertical)
+   -------------------------------------------------------------------------- */
+.engine-steps-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.steps-rail-header {
+  color: var(--fg-muted);
+}
+
+.steps-rail-track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-20);
+  position: relative;
+}
+
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .steps-rail-track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 599.98px) {
+  .steps-rail-track {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+}
+
+.step-node-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.step-node-badge-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg-hi);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.step-badge.has-ember-ring {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.step-node-line {
+  height: 1px;
+  flex: 1;
+  background-color: var(--line);
+}
+
+@media (max-width: 599.98px) {
+  .step-node-line {
+    display: none;
+  }
+}
+
+.step-node-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg-hi);
+  margin: 0;
+}
+
+.step-node-desc {
+  font-size: 13px;
+  color: var(--fg);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Pillars (3 light glass tiles, first is tone inverse)
+   -------------------------------------------------------------------------- */
+.engine-pillars-wrap {
+  width: 100%;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-20);
+}
+
+@media (max-width: 899.98px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-24);
+  height: 100%;
+}
+
+.pillar-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-raised);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-hi);
+}
+
+.pillar-title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.pillar-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--fg);
+}
+
+/* --------------------------------------------------------------------------
+   Engineering Targets (Static Cadet Tiles, 10px corner ember dots)
+   -------------------------------------------------------------------------- */
+.engine-targets-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.targets-eyebrow {
+  color: var(--fg-muted);
+}
+
+.targets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-20);
+}
+
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .targets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599.98px) {
+  .targets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.target-cadet-card {
+  position: relative;
+  background-color: var(--cadet);
+  border: 1px solid var(--cadet-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  box-shadow: var(--shadow-card);
+}
+
+/* Four 10px corner ember dots */
+.target-corner-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.target-corner-dot.dot-tl {
+  top: 10px;
+  left: 10px;
+}
+
+.target-corner-dot.dot-tr {
+  top: 10px;
+  right: 10px;
+}
+
+.target-corner-dot.dot-bl {
+  bottom: 10px;
+  left: 10px;
+}
+
+.target-corner-dot.dot-br {
+  bottom: 10px;
+  right: 10px;
+}
+
+.target-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1;
+  color: var(--gas-soft);
+}
+
+.target-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gas);
+  margin: 0;
+}
+
+.targets-note {
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Research Continuation Section (#research)
+   -------------------------------------------------------------------------- */
+.engine-research-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  padding-top: var(--space-48);
+  border-top: 1px solid var(--line);
+}
+
+.research-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 760px;
+}
+
+.research-title {
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-20);
+}
+
+@media (max-width: 759.98px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-32);
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.research-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.research-track-label {
+  color: var(--fg-muted);
+}
+
+.research-question {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.25;
+  color: var(--fg-hi);
+  margin: 0;
+}
+
+.research-desc {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg);
+  margin: 0;
+}
+
+.research-ghost-wrap {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  pointer-events: none;
+  opacity: 0.12;
+  z-index: 0;
+}

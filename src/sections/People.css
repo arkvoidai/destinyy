@@ -1,0 +1,369 @@
+.ark-people {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-pad);
+  background-color: var(--bg);
+  color: var(--fg);
+  z-index: 3;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop 2-Column Layout (900px and up)
+   -------------------------------------------------------------------------- */
+@media (min-width: 900px) {
+  .people-container {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: var(--space-48);
+    position: relative;
+    align-items: start;
+  }
+
+  .people-sticky-sidebar {
+    position: sticky;
+    top: 14svh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+  }
+
+  .people-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 290px;
+    gap: var(--space-20);
+  }
+
+  .bento-scholar {
+    grid-row: span 2;
+  }
+
+  .bento-immortal {
+    grid-row: span 2;
+  }
+
+  .bento-beast {
+    grid-column: span 1;
+  }
+}
+
+/* GhostText Behind Heading */
+.people-ghost-wrap {
+  position: absolute;
+  top: -60px;
+  left: -30px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.people-header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.people-title {
+  margin: 0;
+  color: var(--fg-hi);
+}
+
+.people-sub {
+  margin: 0;
+  max-width: 44ch;
+}
+
+/* --------------------------------------------------------------------------
+   Memory Formation Timeline
+   -------------------------------------------------------------------------- */
+.people-timeline-block {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-top: var(--space-8);
+}
+
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  padding-left: var(--space-20);
+}
+
+/* 1px connecting line */
+.timeline-connecting-line {
+  position: absolute;
+  left: 6px;
+  top: 16px;
+  bottom: 24px;
+  width: 1px;
+  background-color: var(--line);
+  transform-origin: top;
+}
+
+.timeline-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  background-color: var(--bg-raised);
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--fg-muted);
+}
+
+/* Day 7 node with one-time ring ripple */
+.day7-node-wrap {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day7-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  position: relative;
+  z-index: 2;
+}
+
+.day7-ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: day7Ripple 900ms ease-out 400ms forwards;
+  z-index: 1;
+}
+
+@keyframes day7Ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+html[data-motion="none"] .day7-ripple {
+  display: none;
+}
+
+.timeline-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Bento Portrait Tiles
+   -------------------------------------------------------------------------- */
+.people-bento-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-card);
+}
+
+.bento-photo-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bento-scene-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .people-bento-tile:hover .bento-scene-photo {
+    transform: scale(1.04);
+  }
+}
+
+/* Bottom Scrim for text readability */
+.bento-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 12, 21, 0.88) 0%,
+    rgba(10, 12, 21, 0.40) 45%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Tile Overlay Content */
+.bento-tile-overlay {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-24);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.bento-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bento-name {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--gas-soft);
+  margin: 0;
+}
+
+.bento-desc {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--gas);
+  margin: 0;
+  max-width: 32ch;
+}
+
+.bento-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  color: var(--gas-soft);
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Horizontal Scroll Row (< 600px) & Grid (600px - 899px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 899.98px) {
+  .people-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48);
+  }
+
+  .people-bento-scroller {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    padding-inline: 16px;
+    margin-inline: -16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+  }
+
+  .people-bento-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .people-bento-scroller:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .people-bento-grid {
+    display: flex;
+    gap: var(--space-16);
+    width: max-content;
+  }
+
+  .bento-tile-wrap {
+    width: 78vw;
+    max-width: 340px;
+    height: 420px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899.98px) {
+  .people-bento-scroller {
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .people-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: var(--space-16);
+  }
+
+  .bento-tile-wrap {
+    width: 100%;
+    max-width: none;
+    height: 380px;
+  }
+}

@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Arkvoid FAQ SECTION (Stage 9)
+   Theme: dawn-soft, class: sheet
+   Centred accordion (max-width 860px), 12px gap, 60px min-height,
+   grid-template-rows 0fr to 1fr animation (260ms), plus-to-x rotation.
+   ========================================================================== */
+
+.ark-faq {
+  position: relative;
+  padding-top: var(--space-80);
+  padding-bottom: var(--space-96);
+  background-color: var(--dawn-soft-bg, var(--gas-soft));
+  color: var(--cadet-deep);
+  overflow: hidden;
+}
+
+.faq-header-container {
+  margin-bottom: var(--space-48);
+}
+
+.faq-header-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  gap: var(--space-16);
+}
+
+.faq-label-chip {
+  color: var(--cadet);
+  border-color: rgba(30, 41, 59, 0.2);
+}
+
+.faq-title {
+  margin: 0;
+  color: var(--cadet-deep);
+}
+
+.faq-title .ember-ink {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion Container & Rows
+   -------------------------------------------------------------------------- */
+.faq-accordion-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.faq-item-glass {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition-property: transform, opacity;
+  transition-duration: var(--d-hover);
+}
+
+.faq-item-glass.is-open {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(30, 41, 59, 0.16);
+  box-shadow: 0 8px 24px -6px rgba(30, 41, 59, 0.06);
+}
+
+/* Accordion Trigger Button */
+.faq-trigger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 60px;
+  padding: var(--space-16) var(--space-24);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cadet-deep);
+  transition-property: opacity;
+  transition-duration: var(--d-press);
+}
+
+.faq-trigger-btn:hover {
+  opacity: 0.85;
+}
+
+.faq-trigger-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.faq-question-text {
+  flex: 1;
+  padding-right: var(--space-16);
+}
+
+/* Plus Icon rotates 45deg into an X when open */
+.faq-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.06);
+  color: var(--cadet);
+  flex-shrink: 0;
+  transition-property: transform;
+  transition-duration: 260ms;
+  transition-timing-function: var(--ease-out);
+}
+
+.faq-item-glass.is-open .faq-icon-wrap {
+  transform: rotate(45deg);
+  background: rgba(30, 41, 59, 0.12);
+  color: var(--cadet-deep);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion Panel: grid-template-rows animation (0fr -> 1fr)
+   Isolated with overflow: hidden; contain: layout;
+   -------------------------------------------------------------------------- */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition-property: grid-template-rows;
+  transition-duration: 260ms;
+  transition-timing-function: var(--ease-out);
+  contain: layout;
+  overflow: hidden;
+}
+
+.faq-item-glass.is-open .faq-panel {
+  grid-template-rows: 1fr;
+}
+
+.faq-panel-content {
+  overflow: hidden;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 200ms;
+  transition-delay: 60ms;
+}
+
+.faq-item-glass.is-open .faq-panel-content {
+  opacity: 1;
+}
+
+.faq-answer-inner {
+  padding: 0 var(--space-24) var(--space-20) var(--space-24);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(30, 41, 59, 0.82);
+}
+
+.faq-answer-inner p {
+  margin: 0;
+}

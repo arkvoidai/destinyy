@@ -1,0 +1,36 @@
+.split-words-wrapper {
+  display: inline;
+}
+
+.split-words-inner {
+  display: inline;
+}
+
+.word-mask {
+  display: inline-block;
+  overflow: clip;
+  padding-block: 0.12em;
+  vertical-align: top;
+  margin-block: -0.12em;
+}
+
+.word-rise {
+  display: inline-block;
+  transform: translateY(105%);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: calc(var(--d-reveal) * var(--motion-scale));
+  transition-timing-function: var(--ease-out);
+}
+
+.split-words-wrapper.is-visible .word-rise {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Reduced motion disables word transform */
+html[data-motion="none"] .word-rise {
+  transform: none;
+  opacity: 1;
+  transition: none;
+}

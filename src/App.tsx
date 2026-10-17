@@ -5,6 +5,7 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { BriefProvider } from './context/BriefContext';
 import { WorldProvider } from './world/provider';
 import { Hero } from './sections/Hero';
+import { GlanceSection } from './sections/GlanceSection';
 import { Manifesto } from './sections/Manifesto';
 import { Ache } from './sections/Ache';
 import { World } from './sections/World';
@@ -52,6 +53,12 @@ export const SECTION_REGISTRY: SectionDefinition[] = [
     theme: 'void',
     label: 'Hero',
     Component: Hero,
+  },
+  {
+    id: 'features',
+    theme: 'void',
+    label: 'At a Glance',
+    Component: GlanceSection,
   },
   {
     id: 'manifesto',

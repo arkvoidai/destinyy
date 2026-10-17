@@ -1,0 +1,101 @@
+.ark-glance-section {
+  position: relative;
+  background-color: var(--black);
+  padding-top: var(--space-48);
+  padding-bottom: var(--space-72);
+  z-index: 2;
+  overflow: hidden;
+}
+
+.glance-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.hero-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.glance-cell-wrap {
+  display: flex;
+  height: 100%;
+}
+
+.glance-cell-wrap > .glance-cell {
+  width: 100%;
+}
+
+.glance-cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.45);
+  transition: transform 220ms ease-out, border-color 220ms ease-out;
+}
+
+.glance-cell:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-glass-bright);
+}
+
+.glance-key {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+.glance-val {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--fg-hi);
+}
+
+/* Tone-inverse card (first card, Gargoyle Gas) - dark ink text for pristine contrast */
+.glance-cell.glance-cell-inverse {
+  background-color: var(--gas) !important;
+  border-color: var(--gas-deep) !important;
+}
+
+.glance-cell.glance-cell-inverse .glance-key {
+  color: var(--ink-muted) !important;
+}
+
+.glance-cell.glance-cell-inverse .glance-val {
+  color: var(--cadet) !important;
+  font-weight: 600 !important;
+}
+
+/* Responsive Grid */
+@media (max-width: 1023.98px) {
+  .hero-glance-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-16);
+  }
+}
+
+@media (max-width: 600px) {
+  .ark-glance-section {
+    padding-top: var(--space-32);
+    padding-bottom: var(--space-48);
+  }
+
+  .hero-glance-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .glance-cell {
+    padding: var(--space-16) var(--space-20);
+    gap: var(--space-4);
+  }
+}

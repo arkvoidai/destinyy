@@ -29,7 +29,7 @@ export const copy = {
     eyebrow: 'Arkvoid Inc.',
     h1: 'A world that knows you were here',
     italic: 'knows you were here',
-    sub: 'Arkvoid is building a living world you can step into, and the device to enter it. The people there have names, histories and memories. What you do stays done.',
+    sub: 'Step into a world that continues beyond you. Meet intelligent inhabitants with their own memories, ambitions, and relationships. Explore, build, and leave a mark on a civilization that remembers.',
     primary: {
       label: 'Enter the demo',
       href: '#prototype',

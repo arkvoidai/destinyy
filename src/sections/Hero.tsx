@@ -1,13 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Container } from '../components/Container';
-import { Chip } from '../components/Chip';
 import { Button } from '../components/Button';
-import { Glass } from '../components/Glass';
 import { SceneImage } from '../components/SceneImage';
 import { Ember } from '../components/Ember';
 import { SplitWords } from '../components/SplitWords';
-import { Reveal } from '../components/Reveal';
-import { RevealGroup } from '../components/RevealGroup';
 import { copy } from '../data/copy';
 import { easeScrollTo, createIdleLoop } from '../lib/motion';
 import { useMedia } from '../hooks/useMedia';
@@ -105,7 +101,7 @@ export const Hero: React.FC = () => {
           {/* Subtitle */}
           <p className="lead hero-sub">{copy.hero.sub}</p>
 
-          {/* Action Buttons */}
+          {/* Action Buttons: Primary and Secondary together at bottom of hero */}
           <div className="hero-actions-row">
             <Button
               variant="primary"
@@ -124,35 +120,7 @@ export const Hero: React.FC = () => {
               {copy.hero.secondary.label}
             </Button>
           </div>
-
-          {/* Status with "now" dot */}
-          <div className="hero-status-row">
-            <Chip variant="outline" dot="now" className="hero-status-chip">
-              {copy.hero.status}
-            </Chip>
-          </div>
         </div>
-
-        {/* 4. Four Glance Cells across the bottom */}
-        <RevealGroup className="hero-glance-grid">
-          {copy.hero.glance.map((item, idx) => (
-            <Reveal
-              key={item.k}
-              reveal="up"
-              delay={((idx % 4) + 1) as 1 | 2 | 3 | 4}
-              className="glance-cell-wrap"
-            >
-              <Glass
-                tone={idx === 0 ? 'inverse' : 'dark'}
-                radius="md"
-                className="glance-cell"
-              >
-                <span className="glance-key label">{item.k}</span>
-                <span className="glance-val">{item.v}</span>
-              </Glass>
-            </Reveal>
-          ))}
-        </RevealGroup>
       </Container>
     </section>
   );
